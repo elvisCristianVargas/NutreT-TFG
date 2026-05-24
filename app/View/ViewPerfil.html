@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/public/img/favicon.png">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script defer src="https://nutret.es/public/js/perfil.js"></script>
+    <script defer src="https://nutret.es/public/js/datosBasicos.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "on-tertiary-fixed": "#2c1600",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#4d2b00",
+                        "background": "#f8faf8",
+                        "surface-container-high": "#e6e9e7",
+                        "surface": "#f8faf8",
+                        "on-secondary-fixed": "#002201",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e1e3e1",
+                        "on-surface-variant": "#3f4a3c",
+                        "surface-tint": "#2c694e",
+                        "outline-variant": "#becab9",
+                        "surface-bright": "#f8faf8",
+                        "surface-container": "#eceeec",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#a4f792",
+                        "primary-fixed": "#b1f0ce",
+                        "on-secondary-container": "#267320",
+                        "on-primary-fixed": "#002114",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2e3130",
+                        "primary-fixed-dim": "#95d4b3",
+                        "tertiary-fixed-dim": "#ffb870",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#191c1b",
+                        "surface-dim": "#d8dad9",
+                        "on-secondary-fixed-variant": "#005303",
+                        "on-background": "#191c1b",
+                        "tertiary-container": "#e18500",
+                        "surface-variant": "#e1e3e1",
+                        "inverse-on-surface": "#eff1ef",
+                        "primary-container": "#6ba889",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "secondary-fixed-dim": "#89da79",
+                        "tertiary": "#8b5000",
+                        "surface-container-low": "#f2f4f2",
+                        "secondary-container": "#a4f792",
+                        "secondary": "#1f6d1a",
+                        "outline": "#6f7a6b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#003b27",
+                        "tertiary-fixed": "#ffdcbe",
+                        "inverse-primary": "#95d4b3",
+                        "on-primary": "#ffffff",
+                        "primary": "#2c694e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .bg-mint-gradient {
+            background: linear-gradient(135deg, #f8faf8 0%, #e8f5ed 50%, #f8faf8 100%);
+        }
+
+        .campo .field-view {
+            display: flex;
+        }
+
+        .campo .field-edit {
+            display: none;
+        }
+
+        .campo.editing .field-view {
+            display: none;
+        }
+
+        .campo.editing .field-edit {
+            display: flex;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .bg-mint-gradient {
+            background: linear-gradient(135deg, #f8faf8 0%, #e8f5ed 50%, #f8faf8 100%);
+        }
+
+        .field-edit {
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(44, 105, 78, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .field-edit:focus-within {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #2c694e;
+            box-shadow: 0 0 0 4px rgba(44, 105, 78, 0.1);
+        }
+
+        .field-edit input {
+            background: transparent;
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 0;
+        }
+
+        /* Nav y Footer */
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(248, 250, 248, 0.8);
+            backdrop-filter: blur(20px);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 glass-nav">
+        <nav class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-12">
+                <span class="text-2xl font-black text-primary tracking-tight brand-font"><a class="urls" href="">NutreT</a></span>
+                <div class="hidden md:flex gap-8 items-center">
+                    <a class="text-on-surface-variant hover:text-secondary font-headline font-semibold tracking-tight transition-colors duration-300 urls"
+                        href="/Despensa">Despensa</a>
+                    <a class="text-on-surface-variant hover:text-secondary font-headline font-semibold tracking-tight transition-colors duration-300 urls"
+                        href="/Generar">Generar</a>
+                    <a class="text-on-surface-variant hover:text-secondary font-headline font-semibold tracking-tight transition-colors duration-300 urls"
+                        href="/Recetas">Recetas</a>
+                </div>
+            </div>
+            <div id="divnavUser">
+                <a class="flex items-center gap-2 group transition-transform active:scale-95" href="">
+                    <span class="material-symbols-outlined text-primary text-3xl"
+                        data-icon="account_circle">account_circle</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <!-- Main Content: Profile Card Canvas -->
+    <main
+        class="min-h-screen pt-32 pb-20 px-6 bg-mint-gradient flex items-center justify-center relative overflow-hidden">
+        <!-- Abstract Botanical Decor -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-fixed-dim/20 rounded-full blur-[100px]"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary-fixed/20 rounded-full blur-[100px]"></div>
+        <div class="w-full max-w-xl relative">
+            <div class="glass-card rounded-xl p-10 md:p-12 shadow-2xl shadow-primary/5 border border-white/40">
+                <div class="flex flex-col items-center mb-10">
+                    <div class="relative group">
+                        <div
+                            class="w-32 h-32 rounded-full overflow-hidden bg-surface-container mb-6 border-4 border-white shadow-lg relative z-10">
+                            <img id="imagenUsuario" alt="User avatar" class="w-full h-full object-cover"
+                                data-alt="Detailed studio headshot of a person with clear skin, neutral expression, soft rim lighting, high-end editorial style"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQcOrzd65HQA0gg1IAfFOV1ad22WmZpntlx_tZpOiUZC76c541jnnOj4K3Ot_B9It8zsOOpMGMPMWxhHiChdZ74o3hLeyiwDe_Wd_mpXA1NI0E-RDvGSQLinHSDQB2-MyqPih5AGKx74apj_tPlZPT20WyT1VqSBVXPo72lZrPR73DIj2AKhWpbjcHCrZXRYT3mTcoQ5OJQohdmGSPutksAw6JQJceBiJ_TPM62qrXfX1VT-8j0U75StX7ZmTePL3rM03hr9mG6r0" />
+                            <div onclick="document.getElementById('inputFoto').click()"
+                                class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer z-20">
+                                <span class="material-symbols-outlined text-white text-2xl">photo_camera</span>
+                                <span class="text-white text-xs font-bold mt-1">Cambiar</span>
+                            </div>
+                        </div>
+
+                        <input type="file" id="inputFoto" accept="image/*" class="hidden" onchange="subirFoto(event)"/>
+                    </div>
+                    <h1 class="font-headline font-extrabold text-3xl text-on-surface tracking-tight mb-1">Tu Perfil</h1>
+                    <p class="font-body text-on-surface-variant text-sm uppercase tracking-widest">Información de
+                        Usuario</p>
+                </div>
+                <div class="space-y-8">
+                    <!-- User Details Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="campo space-y-2">
+                            <label ...>Usuario</label>
+                            <!-- Vista -->
+                            <div
+                                class="field-view bg-surface-container/50 rounded-lg px-5 py-4 text-on-surface font-body font-medium flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary/60 text-lg">alternate_email</span>
+                                <span class="valor" id="user">user1</span>
+                            </div>
+                            <!-- Edición -->
+                            <div
+                                class="field-edit rounded-lg px-5 py-4 text-on-surface font-body font-medium flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary/60 text-lg">alternate_email</span>
+                                <input id="inputUsuario" class="focus:ring-0 focus:outline-none p-0" data-campo="user" type="text"
+                                    value="nutret_alberto" />
+                                
+                            </div>
+                            <small aria-live="polite" class="error-message" id="error-user" style="display: none;">El nombre de
+                                usuario ya existe</small>
+                        </div>
+                        <div class="campo space-y-2">
+                            <label ...>Nombre</label>
+                            <!-- Vista -->
+                            <div
+                                class="field-view bg-surface-container/50 rounded-lg px-5 py-4 text-on-surface font-body font-medium flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary/60 text-lg">alternate_email</span>
+                                <span class="valor" id="nombre">user1</span>
+                            </div>
+                            <!-- Edición -->
+                            <div
+                                class="field-edit rounded-lg px-5 py-4 text-on-surface font-body font-medium flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary/60 text-lg">person</span>
+                                <input class="focus:ring-0 focus:outline-none p-0" data-campo="nombre" type="text"
+                                    value="Alberto" />
+                            </div>
+                        </div>
+                        <div class="campo space-y-2 md:col-span-2">
+                            <label ...>Email</label>
+                            <!-- Vista -->
+                            <div
+                                class="field-view bg-surface-container/50 rounded-lg px-5 py-4 text-on-surface font-body font-medium flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary/60 text-lg">alternate_email</span>
+                                <span class="valor" id="email">user1</span>
+                            </div>
+                            <!-- Edición -->
+                            <div
+                                class="field-edit rounded-lg px-5 py-4 text-on-surface font-body font-medium flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary/60 text-lg">mail</span>
+                                <input id="inputEmail" class="focus:ring-0 focus:outline-none p-0" data-campo="email" type="email"
+                                    value="alberto.valencia@nutret.com" />
+                            </div>
+                            <small aria-live="polite" class="error-message" id="error-email" style="display: none;">El correo eléctronico ya existe</small>
+                        </div>
+
+                        <div class="campo space-y-2">
+                            <label ...>Apellidos</label>
+                            <!-- Vista -->
+                            <div
+                                class="field-view bg-surface-container/50 rounded-lg px-5 py-4 text-on-surface font-body font-medium flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary/60 text-lg">alternate_email</span>
+                                <span class="valor" id="apellidos">user1</span>
+                            </div>
+                            <!-- Edición -->
+                            <div
+                                class="field-edit rounded-lg px-5 py-4 text-on-surface font-body font-medium flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary/60 text-lg">badge</span>
+                                <input class="focus:ring-0 focus:outline-none p-0" data-campo="apellidos" type="text"
+                                    value="Valencia Martí" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Actions -->
+                    <div class="pt-6 flex flex-col gap-4">
+                        <button id="btnEditar" onclick="toggleEdit()"
+                            class="w-full h-12 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-xl">edit</span>
+                            Editar Perfil
+                        </button>
+                        <button id="btnCancelar" onclick="cancelarEdit()" style="display:none"
+                            class="w-full h-12 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all flex items-center justify-center gap-2">
+                            Cancelar
+                        </button>
+                        <button
+                            class="w-full h-12 font-headline font-bold text-primary hover:bg-primary-fixed/30 rounded-xl transition-all flex items-center justify-center gap-2" onclick="logOut()">
+                            Cerrar Sesión
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Contextual Information (Organic Asymmetry) -->
+            <div class="mt-8 flex justify-center">
+                <div class="flex gap-12 items-center">
+                    <div class="text-center">
+                        <div id="recetasGeneradas" class="text-2xl font-headline font-black text-secondary">24</div>
+                        <div
+                            class="text-[10px] font-headline font-bold uppercase tracking-tighter text-on-surface-variant">
+                            Recetas</div>
+                    </div>
+                    <div class="w-[1px] h-8 bg-outline-variant/30"></div>
+                    <div class="text-center">
+                        <div id="recetasFavoritas" class="text-2xl font-headline font-black text-secondary">158</div>
+                        <div
+                            class="text-[10px] font-headline font-bold uppercase tracking-tighter text-on-surface-variant">
+                            Favoritas</div>
+                    </div>
+                    <!--<div class="w-[1px] h-8 bg-outline-variant/30"></div>
+                    <div class="text-center">
+                        <div class="text-2xl font-headline font-black text-secondary">12</div>
+                        <div
+                            class="text-[10px] font-headline font-bold uppercase tracking-tighter text-on-surface-variant">
+                            Metas</div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </main>
+    <nav id="mobileBottomNav"
+        class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 glass-header shadow-[0_-4px_24px_rgba(25,28,27,0.04)] z-50 rounded-t-[3rem]">
+        <a href="/Principal" class="bottom-nav-link urls flex flex-col items-center justify-center text-emerald-600 transition-transform hover:scale-105" data-page="Principal">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-['Manrope'] text-xs font-medium">Principal</span>
+        </a>
+        <a href="/Despensa" class="bottom-nav-link urls flex flex-col items-center justify-center text-emerald-600 transition-transform hover:scale-105" data-page="Despensa">
+            <span class="material-symbols-outlined">inventory_2</span>
+            <span class="font-['Manrope'] text-xs font-medium">Despensa</span>
+        </a>
+        <a href="/Generar" class="bottom-nav-link urls flex flex-col items-center justify-center text-emerald-600 transition-transform hover:scale-105" data-page="Generar">
+            <span class="material-symbols-outlined">auto_fix_high</span>
+            <span class="font-['Manrope'] text-xs font-medium">Generar</span>
+        </a>
+        <a href="/Recetas" class="bottom-nav-link urls flex flex-col items-center justify-center text-emerald-600 transition-transform hover:scale-105" data-page="Recetas">
+            <span class="material-symbols-outlined">restaurant_menu</span>
+            <span class="font-['Manrope'] text-xs font-medium">Recetas</span>
+        </a>
+    </nav>
+    <!-- Footer -->
+    <footer
+        class="w-full py-12 px-12 flex flex-col md:flex-row justify-between items-center gap-6 bg-surface-container rounded-t-xl mt-20">
+        <div class="flex flex-col items-center md:items-start gap-2">
+            <span class="font-headline font-bold text-primary text-xl">NutreT</span>
+            <p class="font-body text-sm text-on-surface-variant">© 2026 NutreT. La Despensa Digital.</p>
+        </div>
+        <div class="flex gap-8">
+            <a class="font-body text-sm text-on-surface-variant hover:underline decoration-tertiary underline-offset-4 transition-all duration-200"
+                href="mailto:nutret@gmail.com">Contacto</a>
+            <!--<a class="font-body text-sm text-on-surface-variant hover:underline decoration-tertiary underline-offset-4 transition-all duration-200"
+                href="">Privacidad</a>
+            <a class="font-body text-sm text-on-surface-variant hover:underline decoration-tertiary underline-offset-4 transition-all duration-200"
+                href="">Instagram</a>
+            <a class="font-body text-sm text-on-surface-variant hover:underline decoration-tertiary underline-offset-4 transition-all duration-200"
+                href="">LinkedIn</a>-->
+        </div>
+    </footer>
+</body>
+
+</html>

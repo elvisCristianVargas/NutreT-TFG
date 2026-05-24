@@ -1,0 +1,188 @@
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/public/img/favicon.png">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>NutreT - Registro</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script defer src="https://nutret.es/public/js/datosBasicos.js"></script>
+    <script defer src="https://nutret.es/public/js/registro.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2c694e",
+                        "primary-container": "#6ba889",
+                        "on-primary": "#ffffff",
+                        "background": "#f8faf8",
+                        "on-background": "#191c1b",
+                        "surface-container": "#eceeec",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#191c1b",
+                        "on-surface-variant": "#3f4a3c",
+                        "outline": "#6f7a6b",
+                        "outline-variant": "#becab9",
+                        "error": "#ba1a1a",
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                    },
+                    borderRadius: {
+                        "lg": "2rem",
+                        "xl": "3rem",
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .bg-register-hero {
+            background-image: linear-gradient(rgba(248, 250, 248, 0.4), rgba(248, 250, 248, 0.4)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuAELEJyevRMNLFgXtaR4qXNcMSNIwZumZ9HdtAnEyEEE6i65gbqGSZqXl_wTswIxKKGex-xIQAgCkOfKMLFgtnEmrNfdU2-IhAKeylptqAO4m9gniuAVz009PPp3pSLAkMVHSlHVcnNnnzU6uVJtCtKvEEwKjuQ05Y4qtvzh_OxtlOh38rjvxhioTxIS6kk3y-s8m1Y8JGP_rGSu59Plw3r23V7eyHXWwhSMZOH6siweZhoAccyrMORQxH0f8spqb3fE2jwxFkHqzY);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .input-styled {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background-color: #eceeec;
+            border-radius: 0.5rem;
+            border: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .input-styled:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #2c694e;
+            background-color: #ffffff;
+        }
+
+        .error-message {
+            font-size: 0.75rem;
+            color: #ba1a1a;
+            margin-top: 0.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="bg-background font-body text-on-background">
+    <div class="loader-container" id="loader" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+    <style>
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #9ad432;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            document.getElementById('loader').style.display = 'none';
+        });
+    </script>
+    <header class="w-full absolute top-0 flex justify-center items-center py-6 px-8 z-50">
+        <nav class="flex items-center justify-between w-full max-w-7xl">
+            <div class="text-2xl font-bold tracking-tight text-emerald-800 font-headline"><a class="urls" href="">NutreT</a></div>
+            <div class="flex items-center gap-2 text-emerald-900">
+                <span class="material-symbols-outlined">energy_savings_leaf</span>
+            </div>
+        </nav>
+    </header>
+    <main class="principal min-h-screen flex items-center justify-center bg-register-hero px-6 pt-24 pb-12">
+        <div
+            class="w-full max-w-md bg-white/80 backdrop-blur-xl rounded-lg p-8 md:p-12 shadow-[0_-4px_24px_0_rgba(25,28,27,0.04)] border border-outline-variant/15">
+            <div class="text-center space-y-2 mb-8">
+                <h1 class="font-headline text-3xl font-extrabold text-on-background tracking-tight">Crear cuenta</h1>
+                <p class="text-on-surface-variant font-medium">Únete a la comunidad NutreT.</p>
+            </div>
+            <form class="flex flex-col gap-4" onsubmit="register(event)">
+                <div class="field-group">
+                    <input class="input w-full px-5 py-4 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline/60" id="user" name="user" placeholder="Usuario" type="text" required/>
+                    <small aria-live="polite" class="error-message" id="error-user" style="display: none;">El nombre de
+                        usuario ya existe</small>
+                </div>
+                <div class="field-group">
+                    <input class="input w-full px-5 py-4 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline/60" id="passwd1" name="passwd1" placeholder="Contraseña" required=""
+                        type="password" />
+                </div>
+                <div class="field-group">
+                    <input class="input w-full px-5 py-4 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline/60" id="passwd2" name="passwd2" placeholder="Repetir Contraseña" required=""
+                        type="password" />
+                    <small aria-live="polite" class="error-message" id="error-pass" style="display: none;">Las
+                        contraseñas tienen que coincidir</small>
+                </div>
+                <div class="field-group">
+                    <input class="input w-full px-5 py-4 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline/60" id="email1" name="email1" placeholder="Email" required=""
+                        type="email" />
+                </div>
+                <div class="field-group">
+                    <input class="input w-full px-5 py-4 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline/60" id="email2" name="email2" placeholder="Repetir Email" required=""
+                        type="email" />
+                    <small aria-live="polite" class="error-message" id="error-email" style="display: none;">Los
+                        correos electrónicos tienen que coincidir</small>
+                </div>
+                <div class="field-group">
+                    <input class="input w-full px-5 py-4 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline/60" id="nombre" name="nombre" placeholder="Nombre" required=""
+                        type="text" />
+                </div>
+                <div class="field-group">
+                    <input class="input w-full px-5 py-4 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline/60" id="apellidos" name="apellidos" placeholder="Apellidos" required=""
+                        type="text" />
+                </div>
+                <div class="pt-4">
+                    <button
+                        class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-xl shadow-lg shadow-primary/10 hover:opacity-90 active:scale-[0.98] transition-all duration-200">
+                        Registrarse
+                    </button>
+                </div>
+                <p class="text-center font-semibold text-sm mt-2" style="color: #ba1a1a; display: none;">El usuario o la
+                    contraseña son incorrectos</p>
+            </form>
+            <p class="text-center text-sm font-medium text-on-surface-variant mt-8">
+                ¿Ya tienes cuenta?
+                <a class="text-primary font-bold hover:underline urls" href="/Principal/loginView">Inicia sesión</a>
+            </p>
+        </div>
+    </main>
+</body>
+
+</html>

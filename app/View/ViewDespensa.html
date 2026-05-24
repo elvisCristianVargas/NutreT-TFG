@@ -1,0 +1,268 @@
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/public/img/favicon.png">
+    <title>NutreT - Mi Despensa</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Manrope:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script defer src="https://nutret.es/public/js/despensa.js"></script>
+    <script defer src="https://nutret.es/public/js/datosBasicos.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eceeec",
+                        "inverse-primary": "#95d4b3",
+                        "surface-container-highest": "#e1e3e1",
+                        "primary-container": "#6ba889",
+                        "error": "#ba1a1a",
+                        "background": "#f8faf8",
+                        "on-secondary-fixed-variant": "#005303",
+                        "on-secondary-container": "#267320",
+                        "primary-fixed": "#b1f0ce",
+                        "on-surface": "#191c1b",
+                        "on-secondary": "#ffffff",
+                        "outline": "#6f7a6b",
+                        "on-tertiary-fixed": "#2c1600",
+                        "surface-dim": "#d8dad9",
+                        "on-primary-fixed": "#002114",
+                        "surface-container-high": "#e6e9e7",
+                        "tertiary-fixed": "#ffdcbe",
+                        "tertiary-container": "#e18500",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e3130",
+                        "secondary-fixed-dim": "#89da79",
+                        "inverse-on-surface": "#eff1ef",
+                        "secondary-container": "#a4f792",
+                        "on-tertiary-fixed-variant": "#693c00",
+                        "surface-tint": "#2c694e",
+                        "secondary-fixed": "#a4f792",
+                        "on-tertiary-container": "#4d2b00",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#8b5000",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "surface-bright": "#f8faf8",
+                        "outline-variant": "#becab9",
+                        "on-primary": "#ffffff",
+                        "surface": "#f8faf8",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb870",
+                        "secondary": "#1f6d1a",
+                        "primary": "#2c694e",
+                        "on-background": "#191c1b",
+                        "on-surface-variant": "#3f4a3c",
+                        "surface-variant": "#e1e3e1",
+                        "surface-container-low": "#f2f4f2",
+                        "on-primary-container": "#003b27",
+                        "on-secondary-fixed": "#002201",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#95d4b3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(248, 250, 248, 0.8);
+            backdrop-filter: blur(20px);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface min-h-screen">
+    <header class="fixed top-0 w-full z-50 glass-nav">
+        <nav class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-12">
+                <span class="text-2xl font-black text-primary tracking-tight brand-font"><a class="urls" href="">NutreT</a></span>
+                <div class="hidden md:flex gap-8 items-center">
+                    <a class="text-primary border-b-2 border-primary pb-1 font-headline font-semibold tracking-tight transition-colors duration-300 urls"
+                        href="/Despensa">Despensa</a>
+                    <a class="text-on-surface-variant hover:text-secondary font-headline font-semibold tracking-tight transition-colors duration-300 urls"
+                        href="/Generar">Generar</a>
+                    <a class="text-on-surface-variant hover:text-secondary font-headline font-semibold tracking-tight transition-colors duration-300 urls"
+                        href="/Recetas">Recetas</a>
+                </div>
+            </div>
+            <div id="divnavUser">
+                <a class="flex items-center gap-2 group transition-transform active:scale-95" href="">
+                    <span class="material-symbols-outlined text-primary text-3xl"
+                        data-icon="account_circle">account_circle</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main class="principal max-w-full mx-auto px-8 pt-32 pb-20">
+        <!-- Hero Title Section -->
+        <div class="mb-16 max-w-7xl mx-auto">
+            <h1 class="text-5xl font-black text-on-surface tracking-tight leading-tight mb-4">Tu Despensa <span
+                    class="text-primary italic">Digital</span></h1>
+            <p class="text-on-surface-variant max-w-xl text-lg">Gestiona tus ingredientes frescos y productos secos para
+                generar recetas inteligentes basadas en lo que tienes.</p>
+        </div>
+        <div class="flex flex-col gap-12 items-start max-w-full">
+            <!-- New Product Form - Full Width -->
+            <section class="w-full bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="material-symbols-outlined text-tertiary" data-icon="add_circle">add_circle</span>
+                    <h2 class="text-2xl font-bold font-headline">Añadir Ingredientes</h2>
+                </div>
+                <form class="productosNuevos urls space-y-6" onsubmit="insertarIngredientes(event)">
+                    <div class="overflow-x-auto rounded-lg">
+                        <table class="tablasDespensa w-full text-left">
+                            <thead class="bg-surface-container-low">
+                                <tr>
+                                    <th
+                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label">
+                                        Producto</th>
+                                    <th
+                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label">
+                                        Cant.</th>
+                                        <!-- AQUI -->
+                                    <th
+                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label">
+                                        Medición</th>
+                                    <th
+                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label">
+                                        Stock</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-surface-container" id="tbodyIngredientes">
+                                <!-- Dynamic content here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex justify-end">
+                        <button
+                            class="w-full md:w-auto px-12 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-xl shadow-lg shadow-primary/10 hover:opacity-90 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+                            name="guardarComidaDespensa">
+                            <span class="material-symbols-outlined" data-icon="save">save</span>
+                            Guardar en la despensa
+                        </button>
+                    </div>
+                </form>
+            </section>
+            <!-- Current Inventory Section - Full Width -->
+            <section class="w-full">
+                <div class="bg-surface-container rounded-xl p-8">
+                    <div class="flex justify-between items-center mb-8">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-secondary"
+                                data-icon="inventory_2">inventory_2</span>
+                            <h2 class="text-2xl font-bold font-headline">Inventario Actual</h2>
+                        </div>
+                        <select id="filtroDespensa"
+                            class="text-sm font-label bg-surface-container-highest px-4 py-1 rounded-full text-on-surface-variant">
+                            <option selected>--Seleccionar filtro--</option>
+                            <option value="nombre-asc">Nombre A-Z</option>
+                            <option value="nombre-desc">Nombre Z-A</option>
+                            <option value="stock-asc">Stock Ascendente</option>
+                            <option value="stock-desc">Stock Descendente</option>
+                            <option value="cantidad-asc">Cantidad Ascendente</option>
+                            <option value="cantidad-desc">Cantidad Descendente</option>
+                            <option value="fecha_insercion-asc">Fecha Ascendente</option>
+                            <option value="fecha_insercion-desc">Fecha Descendente</option>
+                        </select>
+                        <span
+                            class="text-sm font-label bg-surface-container-highest px-4 py-1 rounded-full text-on-surface-variant"
+                            id="articulosTotales">1 Artículo</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="tablasDespensa w-full border-separate border-spacing-y-4">
+                            <thead>
+                                <tr class="text-left">
+                                    <th
+                                        class="px-6 py-2 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label">
+                                        Detalles del Producto</th>
+                                    <th
+                                        class="px-6 py-2 text-xs font-bold uppercase tracking-wider text-on-surface-variant font-label text-right">
+                                        Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyDespensa">
+                                <!-- Dynamic content here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <nav id="mobileBottomNav"
+        class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 glass-header shadow-[0_-4px_24px_rgba(25,28,27,0.04)] z-50 rounded-t-[3rem]">
+        <a href="/Principal" class="bottom-nav-link urls flex flex-col items-center justify-center text-emerald-600 transition-transform hover:scale-105" data-page="Principal">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-['Manrope'] text-xs font-medium">Principal</span>
+        </a>
+        <a href="/Despensa" class="flex flex-col items-center justify-center text-primary border-b-2 border-primary pb-1 transition-transform hover:scale-105" data-page="Despensa">
+            <span class="material-symbols-outlined">inventory_2</span>
+            <span class="font-['Manrope'] text-xs font-medium">Despensa</span>
+        </a>
+        <a href="/Generar" class="bottom-nav-link urls flex flex-col items-center justify-center text-emerald-600 transition-transform hover:scale-105" data-page="Generar">
+            <span class="material-symbols-outlined">auto_fix_high</span>
+            <span class="font-['Manrope'] text-xs font-medium">Generar</span>
+        </a>
+        <a href="/Recetas" class="bottom-nav-link urls flex flex-col items-center justify-center text-emerald-600 transition-transform hover:scale-105" data-page="Recetas">
+            <span class="material-symbols-outlined">restaurant_menu</span>
+            <span class="font-['Manrope'] text-xs font-medium">Recetas</span>
+        </a>
+    </nav>
+    <footer
+        class="w-full py-12 px-12 flex flex-col md:flex-row justify-between items-center gap-6 bg-surface-container rounded-t-xl mt-20">
+        <div class="flex flex-col items-center md:items-start gap-2">
+            <span class="font-headline font-bold text-primary text-xl">NutreT</span>
+            <p class="font-body text-sm text-on-surface-variant">© 2026 NutreT. La Despensa Digital.</p>
+        </div>
+        <div class="flex gap-8">
+            <a class="font-body text-sm text-on-surface-variant hover:underline decoration-tertiary underline-offset-4 transition-all duration-200"
+                href="mailto:nutret@gmail.com">Contacto</a>
+            <!--<a class="font-body text-sm text-on-surface-variant hover:underline decoration-tertiary underline-offset-4 transition-all duration-200"
+                href="">Privacidad</a>
+            <a class="font-body text-sm text-on-surface-variant hover:underline decoration-tertiary underline-offset-4 transition-all duration-200"
+                href="">Instagram</a>
+            <a class="font-body text-sm text-on-surface-variant hover:underline decoration-tertiary underline-offset-4 transition-all duration-200"
+                href="">LinkedIn</a>-->
+        </div>
+    </footer>
+</body>
+
+</html>
